@@ -1,0 +1,154 @@
+###
+POST http://localhost:28852/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "johndoe@acme.com",
+  "password": "B3Fagws6zcBa"
+}
+
+###
+POST http://localhost:28852/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Ivan",
+  "lastname": "Ivanov",
+  "email": "ivanivanov@acme.com",
+  "password": "B3Fagws6zcBa"
+}
+
+
+###
+POST http://localhost:28852/api/auth/changepass
+Authorization: Basic johndoe@acme.com B3Fagws6zcBa
+Content-Type: application/json
+
+{
+  "new_password": "bZPGqH7fTJWW"
+}
+
+###
+GET http://localhost:28852/api/empl/payment?period=01-2021
+Authorization: Basic johndoe@acme.com bZPGqH7fTJWW
+
+###
+GET http://localhost:28852/api/empl/payment?period=13-2021
+Authorization: Basic johndoe@acme.com bZPGqH7fTJWW
+
+###
+GET http://localhost:28852/api/empl/payment
+Authorization: Basic johndoe@acme.com bZPGqH7fTJWW
+
+###
+POST http://localhost:28852/api/acct/payments
+Authorization: Basic ivanivanov@acme.com B3Fagws6zcBa
+Content-Type: application/json
+
+[
+  {
+    "employee": "johndoe@acme.com",
+    "period": "01-2021",
+    "salary": 123456
+  },
+  {
+    "employee": "johndoe@acme.com",
+    "period": "02-2021",
+    "salary": 123456
+  },
+  {
+    "employee": "johndoe@acme.com",
+    "period": "03-2021",
+    "salary": 123456
+  }
+]
+
+###
+POST http://localhost:28852/api/acct/payments
+Content-Type: application/json
+
+[
+  {
+    "employee": "johndoe@acme.com",
+    "period": "01-2021",
+    "salary": -1
+  },
+  {
+    "employee": "johndoe@acme.com",
+    "period": "13-2021",
+    "salary": 123456
+  },
+  {
+    "employee": "johndoe@acme.com",
+    "period": "03-2021",
+    "salary": 123456
+  }
+]
+
+###
+POST http://localhost:28852/api/acct/payments
+Content-Type: application/json
+
+[
+  {
+    "employee": "johndoe@acme.com",
+    "period": "01-2021",
+    "salary": 123456
+  },
+  {
+    "employee": "johndoe@acme.com",
+    "period": "01-2021",
+    "salary": 123456
+  }
+]
+
+###
+PUT http://localhost:28852/api/acct/payments
+Content-Type: application/json
+
+{
+  "employee": "johndoe@acme.com",
+  "period": "01-2021",
+  "salary": 123457
+}
+
+###
+GET http://localhost:28852/api/admin/user
+Authorization: Basic johndoe@acme.com bZPGqH7fTJWW
+
+###
+PUT http://localhost:28852/api/admin/user/role
+Authorization: Basic johndoe@acme.com bZPGqH7fTJWW
+Content-Type: application/json
+
+{
+  "user": "ivanivanov@acme.com",
+  "role": "AUDITOR",
+  "operation": "GRANT"
+}
+
+###
+DELETE http://localhost:28852/api/admin/user/johndoe@acme.com
+Authorization: Basic johndoe@acme.com bZPGqH7fTJWW
+
+###
+DELETE http://localhost:28852/api/admin/user/
+Authorization: Basic johndoe@acme.com bZPGqH7fTJWW
+
+###
+GET http://localhost:28852/api/security/events
+Authorization: Basic ivanivanov@acme.com B3Fagws6zcBa
+
+###
+GET http://localhost:28852/api/security/events
+Authorization: Basic johndoe@acme.com bZPGqH7fTJWW
+
+###
+GET http://localhost:28852/api/empl/payment
+
+###
+
+
+
